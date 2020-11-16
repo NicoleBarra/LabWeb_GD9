@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const homepageController = require('../controllers/HomepageController');
-const pedidosController = require('../controllers/PedidosController');
-const cambioEstadoController = require('../controllers/CambioEstadoController')
+const urlController = require('../controllers/UrlController');
+const shortUrlController = require('../controllers/ShortUrlController')
 
 router.get('/', homepageController.index);
 
 
-router.post('/pedido/create', pedidosController.store);
-router.post('/pedido/update', pedidosController.update);
-router.post('/cambioestado/create', cambioEstadoController.store);
-
+router.post('/url/create', urlController.store);
+router.get('/short_url/:short_url', shortUrlController.show);
+router.post('/url/update', urlController.update);
+router.post('/shorturl/create', shortUrlController.store);
+router.get('/url', urlController.show);
 module.exports = router;
